@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-feb-2017 13:33:47 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="models.Transaccion" table="transaccion" catalog="comprame" optimistic-lock="version">
+        <id name="idTransaccion" type="java.lang.Integer">
+            <column name="id_transaccion" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="clienteByIdClienteVendedor" class="models.Cliente" fetch="select">
+            <column name="id_clienteVendedor" not-null="true" />
+        </many-to-one>
+        <many-to-one name="clienteByIdClienteComprador" class="models.Cliente" fetch="select">
+            <column name="id_clienteComprador" not-null="true" />
+        </many-to-one>
+        <many-to-one name="producto" class="models.Producto" fetch="select">
+            <column name="id_producto" not-null="true" />
+        </many-to-one>
+        <property name="fechaTransaccion" type="date">
+            <column name="fechaTransaccion" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
